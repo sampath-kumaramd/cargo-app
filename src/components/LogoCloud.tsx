@@ -1,4 +1,7 @@
+'use client';
+
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const LogoCloud = () => {
   const logos = [
@@ -34,12 +37,50 @@ const LogoCloud = () => {
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: 'easeOut',
+      },
+    },
+  };
+
   return (
     <div className="bg-white py-16">
       <div className="container mx-auto px-4">
-        <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 grayscale opacity-70">
+        <motion.div
+          className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 grayscale opacity-70"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           {logos.map((logo, index) => (
-            <div key={index} className="flex items-center justify-center">
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className="flex items-center justify-center"
+              whileHover={{
+                scale: 1.1,
+                opacity: 1,
+                filter: 'grayscale(0)',
+                transition: { duration: 0.2 },
+              }}
+            >
               <Image
                 src={logo.src}
                 alt={logo.alt}
@@ -47,9 +88,9 @@ const LogoCloud = () => {
                 height={logo.height}
                 className="object-contain"
               />
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

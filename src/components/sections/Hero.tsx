@@ -1,9 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-
 import Image from 'next/image';
-
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 
 const CARGO_IMAGES = [
@@ -32,28 +31,58 @@ export const Hero = () => {
       <div className="container h-full px-4 mx-auto">
         <div className="grid items-center h-full grid-cols-1 gap-8 py-20 md:grid-cols-2">
           {/* Left Content */}
-          <div className="flex flex-col space-y-6">
-            <span className="text-lg font-semibold tracking-wider text-brand-yellow uppercase">
+          <motion.div
+            className="flex flex-col space-y-6"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          >
+            <motion.span
+              className="text-lg font-semibold tracking-wider text-brand-yellow uppercase"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
               LOGISTIC
-            </span>
-            <h1 className="text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+            </motion.span>
+            <motion.h1
+              className="text-4xl font-bold leading-tight md:text-5xl lg:text-6xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
               Best Shipping{' '}
               <span className="block text-brand-yellow">Partner</span>
-            </h1>
-            <p className="max-w-lg text-lg text-gray-600">
+            </motion.h1>
+            <motion.p
+              className="max-w-lg text-lg text-gray-600"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+            >
               Amet, tempus egestas facilisis volutpat viverra molestie lobortis
               posuere maecenas. molestie lobortis posuere maecenas. Eget sapien,
               gravida nequi.
-            </p>
-            <div className="pt-4">
+            </motion.p>
+            <motion.div
+              className="pt-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+            >
               <Button className="px-8 py-6 text-lg font-semibold bg-brand-yellow hover:bg-brand-yellow-600 text-brand-dark">
                 DISCOVER MORE
               </Button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right Image */}
-          <div className="relative h-[500px] w-full overflow-hidden rounded-lg">
+          <motion.div
+            className="relative h-[500px] w-full overflow-hidden rounded-lg"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          >
             <Image
               src={CARGO_IMAGES[currentImageIndex]}
               alt={`Cargo Image ${currentImageIndex + 1}`}
@@ -61,12 +90,17 @@ export const Hero = () => {
               className="object-cover transition-opacity duration-300"
               priority
             />
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Slide Counter */}
-      <div className="absolute bottom-0 left-0 px-6 py-3 text-white bg-brand-yellow">
+      <motion.div
+        className="absolute bottom-0 left-0 px-6 py-3 text-white bg-brand-yellow"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 0.5 }}
+      >
         <div className="flex items-center space-x-4">
           <span className="text-lg font-semibold">
             {currentImageIndex + 1} / {CARGO_IMAGES.length}
@@ -112,7 +146,7 @@ export const Hero = () => {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
