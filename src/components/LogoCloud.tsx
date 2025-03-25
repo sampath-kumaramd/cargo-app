@@ -3,32 +3,32 @@ import Image from 'next/image';
 const LogoCloud = () => {
   const logos = [
     {
-      src: '/logos/reuss.svg',
-      alt: 'Reuss SEO Company',
+      src: '/logos/Ford.png',
+      alt: 'Ford company',
       width: 120,
       height: 40,
     },
     {
-      src: '/logos/genesis.svg',
-      alt: 'Genesis',
+      src: '/logos/Nike.png',
+      alt: 'Nike',
       width: 120,
       height: 40,
     },
     {
-      src: '/logos/integrio.svg',
-      alt: 'Integrio Corp',
+      src: '/logos/SunPower.png',
+      alt: 'SunPower',
       width: 120,
       height: 40,
     },
     {
-      src: '/logos/brainbiz.svg',
-      alt: 'Brainbiz Digital Agency',
+      src: '/logos/BlueCross.png',
+      alt: 'BlueCross',
       width: 120,
       height: 40,
     },
     {
-      src: '/logos/ziczac.svg',
-      alt: 'Zic Zac',
+      src: '/logos/Timberland.png',
+      alt: 'Timberland',
       width: 120,
       height: 40,
     },
