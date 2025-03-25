@@ -26,7 +26,7 @@ export function Newsletter() {
 
     try {
       setStatus('loading');
-      const response = await fetch('http://localhost:3000/api/subscribe', {
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ export function Newsletter() {
             Weekly Newsletter
           </h2>
           <p className="text-gray-300 mb-4">
-            Stay updated with our latest news and insights.
+            Stay updated with our latest news and insights
           </p>
         </div>
         <div className="flex flex-col sm:flex-row w-full md:w-1/2 gap-2">
