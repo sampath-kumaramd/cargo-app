@@ -39,29 +39,10 @@ Next.js was chosen for this project for several compelling reasons:
   - Type safety for better code quality
   - Enhanced IDE support
   - Better maintainability
-- **State Management:** Zustand
-  - Lightweight and simple state management
-  - Built-in TypeScript support
-  - Easy integration with React
 - **Form Handling:** React Hook Form + Zod
   - Performant form handling
   - Built-in validation
   - Type-safe form schemas
-- **API Integration:** TanStack Query (React Query)
-  - Efficient data fetching and caching
-  - Automatic background updates
-  - Optimistic updates support
-
-## Key Features
-
-- Real-time cargo tracking
-- Inventory management system
-- Customer order processing
-- Analytics dashboard
-- User authentication and authorization
-- Mobile-responsive design
-- Dark/Light mode support
-- Multi-language support
 
 ## Getting Started
 
@@ -75,7 +56,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Project Structure
 
-[Describe your folder structure here]
+Our project follows a modular structure for better organization and maintainability:
+
+- `app/`: Contains all Next.js pages and API routes using the App Router
+- `components/`: Houses all React components, organized by functionality
+- `lib/`: Stores utility functions, hooks, and configuration files
+- `types/`: Contains TypeScript type definitions and interfaces
+- `styles/`: Global styles and Tailwind CSS configurations
+- `public/`: Static assets like images and fonts
 
 ## Development Workflow
 
@@ -94,10 +82,6 @@ This project uses several tools to ensure code quality:
 - `npm run lint` - Run ESLint
 - `npm run lint:fix` - Run ESLint with auto-fix
 - `npm run prettier-watch` - Watch files and format them with Prettier
-
-## Environment Variables
-
-The project uses Zod for environment variable validation. Add your environment variables to the `.env.local` file and update the schema in `src/lib/env.ts`.
 
 ## Styling
 
