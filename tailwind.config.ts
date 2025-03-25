@@ -28,6 +28,22 @@ const config = {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
         },
+        brand: {
+          yellow: {
+            DEFAULT: '#FFB800',
+            50: '#FFF2CC',
+            100: '#FFE999',
+            200: '#FFD466',
+            300: '#FFC033',
+            400: '#FFB800',
+            500: '#CC9300',
+            600: '#996E00',
+            700: '#664900',
+            800: '#332500',
+          },
+          dark: '#1A1A1A',
+          light: '#FFFFFF',
+        },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
