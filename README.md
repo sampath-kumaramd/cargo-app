@@ -65,6 +65,12 @@ Our project follows a modular structure for better organization and maintainabil
 - `styles/`: Global styles and Tailwind CSS configurations
 - `public/`: Static assets like images and fonts
 
+## Email Notifications
+
+When users subscribe to the system, they will receive a confirmation email that looks like this:
+
+![Subscription Confirmation Email](https://ibb.co/XksG9Dv2)
+
 ## Development Workflow
 
 This project uses several tools to ensure code quality:
