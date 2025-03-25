@@ -29,7 +29,7 @@ const Welcome = () => {
                 src="/images/delivery-worker.png"
                 alt="Warehouse worker handling packages"
                 fill
-                className="object-cover rounded-lg"
+                className="object-cover"
               />
             </motion.div>
             {/* Second image - delivery worker */}
@@ -44,13 +44,13 @@ const Welcome = () => {
                 src="/images/warehouse-worker.png"
                 alt="Delivery worker with clipboard"
                 fill
-                className="object-cover rounded-lg"
+                className="object-cover"
               />
             </motion.div>
           </div>
           {/* Stats card */}
           <motion.div
-            className="absolute bottom-4 right-4 bg-[#ff7c46] text-white p-6 rounded-lg"
+            className="absolute bottom-4 right-4 bg-[#ff7c46] text-white p-6 "
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}

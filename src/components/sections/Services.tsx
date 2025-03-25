@@ -118,7 +118,7 @@ export default function Services() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow flex flex-col md:flex-row"
+                className="group relative overflow-hidden shadow-lg hover:shadow-xl transition-shadow flex flex-col md:flex-row"
               >
                 <motion.div
                   className="relative h-[300px] w-full"

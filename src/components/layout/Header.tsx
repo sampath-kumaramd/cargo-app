@@ -100,7 +100,7 @@ export const Header = () => {
                 {/* Dropdown Menu */}
                 {item.hasDropdown && (
                   <div className="absolute left-0 hidden pt-2 group-hover:block">
-                    <div className="w-48 py-2 bg-white rounded-md shadow-lg">
+                    <div className="w-48 py-2 bg-white  shadow-lg">
                       {item.dropdownItems?.map((dropdownItem) => (
                         <Link
                           key={dropdownItem.href}

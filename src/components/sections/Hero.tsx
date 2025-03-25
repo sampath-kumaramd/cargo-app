@@ -87,7 +87,7 @@ export const Hero = () => {
 
           {/* Right Image */}
           <motion.div
-            className="relative h-[500px] w-full overflow-hidden rounded-lg"
+            className="relative h-[500px] w-full overflow-hidden"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -116,7 +116,7 @@ export const Hero = () => {
           </span>
           <div className="flex space-x-2">
             <button
-              className="p-2 hover:bg-brand-yellow-600 rounded-full"
+              className="p-2 hover:bg-brand-yellow-600 "
               onClick={previousImage}
             >
               <svg
@@ -135,7 +135,7 @@ export const Hero = () => {
               </svg>
             </button>
             <button
-              className="p-2 hover:bg-brand-yellow-600 rounded-full"
+              className="p-2 hover:bg-brand-yellow-600"
               onClick={nextImage}
             >
               <svg

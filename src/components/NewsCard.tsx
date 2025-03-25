@@ -26,7 +26,7 @@ const NewsCard: FC<NewsCardProps> = ({
     <div className="group flex flex-col md:flex-row bg-white">
       <div className="relative h-[240px] md:w-[45%] w-full overflow-hidden">
         <Image src={image} alt={title} fill className="object-cover" />
-        <div className="absolute left-0 top-0 rounded group-hover:bg-cyan-500 transition-all duration-300 bg-gray-500 p-2 text-center aspect-square">
+        <div className="absolute left-0 top-0 group-hover:bg-cyan-500 transition-all duration-300 bg-gray-500 p-2 text-center aspect-square">
           <div className="text-xl font-bold text-white">{date.day}</div>
           <div className="text-sm uppercase text-white">{date.month}</div>
         </div>
