@@ -13,22 +13,54 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    text: 'Integer congue elit non semper laoreet sed lectus orci posuer nisl tempor se felis ac mauris. Pellentesque rhyd urna. Integer vitae felis vel magna posu du vestibulum. Nam rutrum congue diam. Aliquam malesuada marus etug met Curabitur laoreet convallis nisal pellentesque bibendum.',
-    author: 'JOHN DEO',
-    position: 'Managing Director',
+    text: 'TransMax Logistics has transformed our supply chain operations. Their real-time tracking system and dedicated support team have helped us reduce delivery times by 40% while maintaining perfect accuracy. The attention to detail and commitment to customer satisfaction is truly exceptional.',
+    author: 'Sarah Chen',
+    position: 'Supply Chain Director, TechCorp International',
   },
-  // Add more testimonials as needed
+  {
+    text: 'As a manufacturer with global operations, we need a logistics partner we can trust completely. TransMax has consistently delivered beyond our expectations. Their innovative solutions and proactive approach to problem-solving have made them an invaluable part of our business.',
+    author: 'Michael Rodriguez',
+    position: 'Operations Director, Global Manufacturing Co.',
+  },
+  {
+    text: 'The level of professionalism and expertise at TransMax is outstanding. They handled our complex international shipping requirements with precision and care. Their customs clearance assistance and documentation support have saved us countless hours and potential headaches.',
+    author: 'Emma Thompson',
+    position: 'International Trade Manager, Export Solutions Ltd.',
+  },
 ];
 
 const whyChooseUsItems = [
-  'Dui ac hendrerit elementum quam ipsum auctor lorem',
-  'Mauris vel magna a est lobortis volutpat',
-  'Sed bibendum ornare lorem mauris feugiat suspendisse neque',
-  'Nulla scelerisque dui hendrerit elementum quam',
+  {
+    title: 'Global Network Coverage',
+    description:
+      'Our extensive network spans over 150 countries with strategic partnerships and local expertise to ensure seamless delivery worldwide.',
+    expanded: false,
+  },
+  {
+    title: 'Advanced Tracking Technology',
+    description:
+      'Real-time GPS tracking and advanced analytics provide complete visibility of your shipments at every stage of the journey.',
+    expanded: false,
+  },
+  {
+    title: 'Customized Solutions',
+    description:
+      'We develop tailored logistics solutions that align with your specific business needs, industry requirements, and growth objectives.',
+    expanded: false,
+  },
+  {
+    title: '24/7 Customer Support',
+    description:
+      'Our dedicated support team is available around the clock to assist with any queries, concerns, or emergency situations.',
+    expanded: false,
+  },
 ];
 
 export function TestimonialSection() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [expandedItems, setExpandedItems] = useState<boolean[]>(
+    Array(whyChooseUsItems.length).fill(false)
+  );
 
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) =>
@@ -42,13 +74,21 @@ export function TestimonialSection() {
     );
   };
 
+  const toggleItem = (index: number) => {
+    setExpandedItems((prev) => {
+      const newState = [...prev];
+      newState[index] = !newState[index];
+      return newState;
+    });
+  };
+
   return (
     <section className="container mx-auto px-4 py-16 grid md:grid-cols-2 gap-12">
       {/* Trusted Clients Section */}
       <div>
         <h2 className="text-2xl font-bold mb-2">TRUSTED CLIENTS</h2>
         <p className="text-gray-500 uppercase text-sm mb-8">
-          LOREM IPSUM DOLOR SIT AMET CONSECTETUR
+          WHAT OUR CLIENTS SAY ABOUT US
         </p>
 
         <div className="bg-gray-100 p-8 relative">
@@ -96,17 +136,45 @@ export function TestimonialSection() {
       <div>
         <h2 className="text-2xl font-bold mb-2">WHY CHOOSE US</h2>
         <p className="text-gray-500 uppercase text-sm mb-8">
-          LOREM IPSUM DOLOR SIT AMET CONSECTETUR
+          OUR KEY DIFFERENTIATORS
         </p>
 
         <div className="space-y-4">
           {whyChooseUsItems.map((item, index) => (
             <div
               key={index}
-              className="flex items-center justify-between p-4 border hover:bg-gray-50 transition-colors cursor-pointer group"
+              className="overflow-hidden border-b border-gray-200"
             >
-              <p className="text-gray-600">{item}</p>
-              <Plus className="w-4 h-4 text-gray-400 group-hover:text-gray-600" />
+              <button
+                className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors cursor-pointer"
+                onClick={() => toggleItem(index)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleItem(index);
+                  }
+                }}
+              >
+                <p className="text-gray-600 font-medium">{item.title}</p>
+                <div className="bg-black w-6 h-6 flex items-center justify-center">
+                  <Plus
+                    className={`w-4 h-4 text-white transition-transform duration-200 ${
+                      expandedItems[index] ? 'rotate-45' : ''
+                    }`}
+                  />
+                </div>
+              </button>
+              {expandedItems[index] && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="px-4 pb-4"
+                >
+                  <p className="text-gray-600">{item.description}</p>
+                </motion.div>
+              )}
             </div>
           ))}
         </div>
