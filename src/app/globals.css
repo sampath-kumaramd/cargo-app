@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/decima-pro-a');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -56,6 +58,10 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+  }
+
+  .font-decima {
+    font-family: 'Decima Pro A', sans-serif;
   }
 }
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -26,19 +26,26 @@ export const Hero = () => {
     );
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextImage();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative min-h-[80vh] bg-white">
       <div className="container h-full px-4 mx-auto">
-        <div className="grid items-center h-full grid-cols-1 gap-8 py-20 md:grid-cols-2">
+        <div className="flex items-center h-full grid-cols-1 gap-8 py-20 relative">
           {/* Left Content */}
           <motion.div
-            className="flex flex-col space-y-6"
+            className="flex flex-col space-y-6 w-1/2"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             <motion.span
-              className="text-lg font-semibold tracking-wider text-brand-yellow uppercase"
+              className="text-lg font-semibold tracking-wider text-black uppercase border-l-4 border-brand-yellow ps-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
@@ -46,13 +53,15 @@ export const Hero = () => {
               LOGISTIC
             </motion.span>
             <motion.h1
-              className="text-4xl font-bold leading-tight md:text-5xl lg:text-6xl"
+              className="text-4xl  leading-tight md:text-5xl lg:text-6xl font-decima"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
             >
               Best Shipping{' '}
-              <span className="block text-brand-yellow">Partner</span>
+              <span className="block text-brand-yellow font-bold mt-3">
+                Partner
+              </span>
             </motion.h1>
             <motion.p
               className="max-w-lg text-lg text-gray-600"
@@ -70,7 +79,7 @@ export const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.5 }}
             >
-              <Button className="px-8 py-6 text-lg font-semibold bg-brand-yellow hover:bg-brand-yellow-600 text-brand-dark">
+              <Button className="px-8 py-6 bg-brand-yellow hover:bg-brand-yellow-600 text-white">
                 DISCOVER MORE
               </Button>
             </motion.div>

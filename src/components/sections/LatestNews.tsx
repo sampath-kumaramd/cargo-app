@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import NewsCard from './NewsCard';
+import NewsCard from '../NewsCard';
 import { motion } from 'framer-motion';
 
 const newsItems = [
