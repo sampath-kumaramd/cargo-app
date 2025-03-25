@@ -118,7 +118,7 @@ const Welcome = () => {
           >
             <Button
               variant="default"
-              className="bg-teal-700 hover:bg-teal-800 text-white px-8 py-2"
+              className=" text-teal-700 bg-gray-200 hover:bg-gray-300 px-8 py-4"
             >
               MORE ABOUT US
             </Button>

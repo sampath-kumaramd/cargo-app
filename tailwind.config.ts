@@ -44,6 +44,16 @@ const config = {
           },
           dark: '#1A1A1A',
           light: '#FFFFFF',
+          green: {
+            DEFAULT: '#8ebb46',
+            50: '#e6f2e6',
+            100: '#cce5cc',
+            200: '#99c999',
+            300: '#66ac66',
+            400: '#338f33',
+            500: '#007300',
+            600: '#005c00',
+          },
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
