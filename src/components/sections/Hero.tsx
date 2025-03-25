@@ -36,10 +36,10 @@ export const Hero = () => {
   return (
     <section className="relative min-h-[80vh] bg-white">
       <div className="container h-full px-4 mx-auto">
-        <div className="flex items-center h-full grid-cols-1 gap-8 py-20 relative">
+        <div className="flex flex-col md:flex-row items-center h-full grid-cols-1 gap-8 py-20 relative">
           {/* Left Content */}
           <motion.div
-            className="flex flex-col space-y-6 w-1/2"
+            className="flex flex-col space-y-6 w-full md:w-1/2 mb-8 md:mb-0"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -53,7 +53,7 @@ export const Hero = () => {
               LOGISTIC
             </motion.span>
             <motion.h1
-              className="text-4xl  leading-tight md:text-5xl lg:text-6xl font-decima"
+              className="text-3xl sm:text-4xl leading-tight md:text-5xl lg:text-6xl font-decima"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
@@ -64,7 +64,7 @@ export const Hero = () => {
               </span>
             </motion.h1>
             <motion.p
-              className="max-w-lg text-lg text-gray-600"
+              className="max-w-lg text-base sm:text-lg text-gray-600"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.5 }}
@@ -87,7 +87,7 @@ export const Hero = () => {
 
           {/* Right Image */}
           <motion.div
-            className="relative h-[500px] w-full overflow-hidden"
+            className="relative h-[300px] sm:h-[400px] md:h-[500px] w-full"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -105,7 +105,7 @@ export const Hero = () => {
 
       {/* Slide Counter */}
       <motion.div
-        className="absolute bottom-0 left-0 px-6 py-3 text-white bg-brand-yellow"
+        className="absolute bottom-0 left-0 px-4 sm:px-6 py-2 sm:py-3 text-white bg-brand-yellow"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.5 }}
