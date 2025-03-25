@@ -9,23 +9,24 @@ export function Newsletter() {
   const [message, setMessage] = useState('');
 
   const handleSubscribe = async () => {
-    // Basic email validation
-    if (!email) {
-      setMessage('Please enter your email address');
-      setStatus('error');
-      return;
-    }
-
-    // Email format validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setMessage('Please enter a valid email address');
-      setStatus('error');
-      return;
-    }
-
     try {
       setStatus('loading');
+
+      // Basic email validation
+      if (!email) {
+        setMessage('Please enter your email address');
+        setStatus('error');
+        return;
+      }
+
+      // Email format validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        setMessage('Please enter a valid email address');
+        setStatus('error');
+        return;
+      }
+
       const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
@@ -46,13 +47,13 @@ export function Newsletter() {
       );
       setEmail('');
     } catch (error) {
+      console.error('Subscription error:', error);
       setStatus('error');
       setMessage(
         error instanceof Error
           ? error.message
           : 'Failed to subscribe. Please try again later.'
       );
-      console.error('Subscription error:', error);
     }
   };
 
