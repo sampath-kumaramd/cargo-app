@@ -30,7 +30,7 @@ export function FooterBottom() {
     <div className="mt-12 pt-6 border-t border-gray-500">
       <div className="flex flex-wrap md:justify-between md:items-center">
         <p className="text-gray-300 text-xs md:text-sm">
-          Copyright © 2021 All Rights Reserved. Site By Xiteb®
+          Copyright © 2025 All Rights Reserved. Site By Xiteb®
         </p>
         <div className="flex gap-4 justify-center items-center">
           {socialLinks.map((social) => {
