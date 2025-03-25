@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Button } from '../ui/button';
+import { useState, useEffect } from 'react';
 
 const services = [
   {
@@ -21,10 +22,47 @@ const services = [
     image: '/images/air.jpg',
     icon: '/logos/ship.png',
   },
-  // Add more services as needed
+  {
+    title: 'Ocean Freight Services',
+    description:
+      'Professional ocean freight services ensuring safe and timely delivery of your cargo across seas.',
+    image: '/images/ship.jpeg',
+    icon: '/logos/airplane.png',
+  },
+  {
+    title: 'Ground Transport',
+    description:
+      'Reliable ground transportation solutions with extensive network coverage and real-time tracking.',
+    image: '/images/air.jpg',
+    icon: '/logos/ship.png',
+  },
+  {
+    title: 'Warehouse Solutions',
+    description:
+      'State-of-the-art warehousing facilities with advanced inventory management systems.',
+    image: '/images/ship.jpeg',
+    icon: '/logos/airplane.png',
+  },
+  {
+    title: 'Express Delivery',
+    description:
+      'Fast and efficient express delivery services for time-sensitive shipments worldwide.',
+    image: '/images/air.jpg',
+    icon: '/logos/ship.png',
+  },
 ];
 
 export default function Services() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 2) % services.length);
+    }, 5000); // Change slides every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -74,52 +112,56 @@ export default function Services() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow flex flex-col md:flex-row"
-            >
+          {services
+            .slice(currentIndex, currentIndex + 2)
+            .map((service, index) => (
               <motion.div
-                className="relative h-[300px] w-full"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
+                key={index}
+                variants={itemVariants}
+                className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow flex flex-col md:flex-row"
               >
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover"
-                />
-                {/* Service Icon */}
                 <motion.div
-                  className="absolute -bottom-4 -right-4 bg-brand-green rounded-full p-4"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.2 }}
+                  className="relative h-[300px] w-full"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
                 >
                   <Image
-                    src={service.icon}
-                    alt=""
-                    width={32}
-                    height={32}
-                    className="w-10 h-10"
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover"
                   />
+                  {/* Service Icon */}
+                  <motion.div
+                    className="absolute -bottom-4 -right-4 bg-brand-green rounded-full p-4"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Image
+                      src={service.icon}
+                      alt=""
+                      width={32}
+                      height={32}
+                      className="w-10 h-10"
+                    />
+                  </motion.div>
                 </motion.div>
-              </motion.div>
 
-              <div className="p-6 bg-white z-10 ">
-                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                <p className="text-gray-600 mb-4">{service.description}</p>
-                <Button
-                  variant="ghost"
-                  className="group/btn text-brand-black hover:text-brand-green-600 p-0"
-                >
-                  <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                  Read More
-                </Button>
-              </div>
-            </motion.div>
-          ))}
+                <div className="p-6 bg-white z-10 ">
+                  <h3 className="text-xl font-semibold mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4">{service.description}</p>
+                  <Button
+                    variant="ghost"
+                    className="group/btn text-brand-black hover:text-brand-green-600 p-0"
+                  >
+                    <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                    Read More
+                  </Button>
+                </div>
+              </motion.div>
+            ))}
         </motion.div>
 
         {/* Navigation Dots */}
@@ -134,6 +176,7 @@ export default function Services() {
               </Button>
             </p>
           </div>
+
           <motion.div
             className="flex justify-center items-center gap-2 mt-8"
             initial={{ opacity: 0 }}
@@ -141,12 +184,15 @@ export default function Services() {
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
           >
-            {[...Array(6)].map((_, i) => (
+            {[...Array(services.length / 2)].map((_, i) => (
               <button
                 key={i}
+                onClick={() => setCurrentIndex(i * 2)}
                 className={cn(
-                  'w-2 h-2 rounded-full transition-all',
-                  i === 0 ? 'w-3 h-3 bg-green-500' : 'bg-gray-300'
+                  'w-2 h-2 rounded-full transition-all cursor-pointer',
+                  currentIndex === i * 2
+                    ? 'w-3 h-3 bg-green-500'
+                    : 'bg-gray-300'
                 )}
                 aria-label={`Go to slide ${i + 1}`}
               />
